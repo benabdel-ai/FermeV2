@@ -11,15 +11,15 @@ class EquipeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      padding: const EdgeInsets.fromLTRB(16, 0, 16, 24),
-      child: Column(
+    return const SingleChildScrollView(
+      padding: EdgeInsets.fromLTRB(16, 0, 16, 24),
+      child: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          const FermeFilterBar(),
+        children: const <Widget>[
+          FermeFilterBar(),
           const SectionTitle('👷 Équipe', sub: 'Salariés fixes et saisonniers'),
-          const _RecurringSection(),
-          const _SessionsSection(),
+          _RecurringSection(),
+          _SessionsSection(),
         ],
       ),
     );
