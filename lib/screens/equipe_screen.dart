@@ -13,11 +13,11 @@ class EquipeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return const SingleChildScrollView(
       padding: EdgeInsets.fromLTRB(16, 0, 16, 24),
-      child: const Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: const <Widget>[
+        children: <Widget>[
           FermeFilterBar(),
-          const SectionTitle('👷 Équipe', sub: 'Salariés fixes et saisonniers'),
+          SectionTitle('ðŸ‘· Ã‰quipe', sub: 'SalariÃ©s fixes et saisonniers'),
           _RecurringSection(),
           _SessionsSection(),
         ],
@@ -26,7 +26,7 @@ class EquipeScreen extends StatelessWidget {
   }
 }
 
-// ─── Salariés fixes (récurrents hebdo) ────────────────────────────────────────
+// â”€â”€â”€ SalariÃ©s fixes (rÃ©currents hebdo) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 class _RecurringSection extends StatelessWidget {
   const _RecurringSection();
@@ -43,7 +43,7 @@ class _RecurringSection extends StatelessWidget {
         children: <Widget>[
           Row(
             children: <Widget>[
-              const Expanded(child: CardTitle('👥 SALARIÉS FIXES — HEBDOMADAIRE')),
+              const Expanded(child: CardTitle('ðŸ‘¥ SALARIÃ‰S FIXES â€” HEBDOMADAIRE')),
               if (dueCount > 0)
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
@@ -52,18 +52,18 @@ class _RecurringSection extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   child: Text(
-                    '$dueCount à payer',
+                    '$dueCount Ã  payer',
                     style: const TextStyle(fontSize: 11, fontWeight: FontWeight.w900, color: AppColors.red),
                   ),
                 ),
             ],
           ),
           AddButton(
-            label: 'Ajouter un salarié fixe',
+            label: 'Ajouter un salariÃ© fixe',
             onTap: () => _showRecurringForm(context),
           ),
           if (recurring.isEmpty)
-            const EmptyState(emoji: '👥', text: 'Aucun salarié fixe configuré')
+            const EmptyState(emoji: 'ðŸ‘¥', text: 'Aucun salariÃ© fixe configurÃ©')
           else
             ...recurring.map((re) => _RecurringItem(re: re)),
         ],
@@ -113,7 +113,7 @@ class _RecurringItem extends StatelessWidget {
             ),
             child: Center(
               child: Text(
-                !re.actif ? '⏸️' : isDue ? '🔴' : '✅',
+                !re.actif ? 'â¸ï¸' : isDue ? 'ðŸ”´' : 'âœ…',
                 style: const TextStyle(fontSize: 22),
               ),
             ),
@@ -141,7 +141,7 @@ class _RecurringItem extends StatelessWidget {
                 ),
                 if (re.lastPaidAt != null)
                   Text(
-                    'Payé le ${fmtDate(re.lastPaidAt!)}',
+                    'PayÃ© le ${fmtDate(re.lastPaidAt!)}',
                     style: const TextStyle(fontSize: 11, color: AppColors.text3),
                   ),
                 const SizedBox(height: 4),
@@ -203,7 +203,7 @@ class _RecurringItem extends StatelessWidget {
   }
 }
 
-// ─── Saisonniers ──────────────────────────────────────────────────────────────
+// â”€â”€â”€ Saisonniers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 class _SessionsSection extends StatelessWidget {
   const _SessionsSection();
@@ -218,12 +218,12 @@ class _SessionsSection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          const CardTitle('🌾 SAISONNIERS'),
+          const CardTitle('ðŸŒ¾ SAISONNIERS'),
           if (sessions.isNotEmpty)
             Padding(
               padding: const EdgeInsets.only(bottom: 12),
               child: Text(
-                'Total main-d\'œuvre : ${fmtMAD(totalPaye)}',
+                'Total main-d\'Å“uvre : ${fmtMAD(totalPaye)}',
                 style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w900, color: AppColors.red),
               ),
             ),
@@ -232,7 +232,7 @@ class _SessionsSection extends StatelessWidget {
             onTap: () => _showSessionForm(context),
           ),
           if (sessions.isEmpty)
-            const EmptyState(emoji: '🌾', text: 'Aucune session enregistrée')
+            const EmptyState(emoji: 'ðŸŒ¾', text: 'Aucune session enregistrÃ©e')
           else
             ...sessions.map((s) => _SessionItem(s: s)),
         ],
@@ -264,14 +264,14 @@ class _SessionItem extends StatelessWidget {
             color: AppColors.orangeBg,
             borderRadius: BorderRadius.circular(18),
           ),
-          child: const Center(child: Text('👷', style: TextStyle(fontSize: 26))),
+          child: const Center(child: Text('ðŸ‘·', style: TextStyle(fontSize: 26))),
         ),
         title: Text(s.nom, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w900)),
         subtitle: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Text(
-              '$joursStr j × ${fmtMAD(s.salaireJournalier)}/j · ${fmtDate(s.date)}',
+              '$joursStr j Ã— ${fmtMAD(s.salaireJournalier)}/j Â· ${fmtDate(s.date)}',
               style: const TextStyle(fontSize: 12, color: AppColors.text3),
             ),
             if (s.remarque.isNotEmpty)
@@ -307,7 +307,7 @@ class _SessionItem extends StatelessWidget {
   }
 }
 
-// ─── Shared helpers ────────────────────────────────────────────────────────────
+// â”€â”€â”€ Shared helpers â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 void _confirmDelete(BuildContext context, VoidCallback onConfirm) {
   showDialog<void>(
@@ -330,7 +330,7 @@ void _confirmDelete(BuildContext context, VoidCallback onConfirm) {
   );
 }
 
-// ─── Recurring form ───────────────────────────────────────────────────────────
+// â”€â”€â”€ Recurring form â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 void _showRecurringForm(BuildContext context) {
   showModalBottomSheet<void>(
@@ -397,17 +397,17 @@ class _RecurringFormState extends State<_RecurringFormSheet> {
           children: <Widget>[
             _handle(),
             const SizedBox(height: 18),
-            const Text('👥 Ajouter un salarié fixe',
+            const Text('ðŸ‘¥ Ajouter un salariÃ© fixe',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900, color: AppColors.green2)),
             const SizedBox(height: 6),
             const Text(
-              'Le bouton "Payer" apparaîtra chaque semaine',
+              'Le bouton "Payer" apparaÃ®tra chaque semaine',
               style: TextStyle(fontSize: 12, color: AppColors.text3, fontWeight: FontWeight.w700),
             ),
             const SizedBox(height: 18),
             TextFormField(
               controller: _labelCtrl,
-              decoration: const InputDecoration(labelText: 'Nom du salarié *'),
+              decoration: const InputDecoration(labelText: 'Nom du salariÃ© *'),
               validator: (v) => (v == null || v.isEmpty) ? 'Requis' : null,
             ),
             const SizedBox(height: 12),
@@ -440,9 +440,9 @@ class _RecurringFormState extends State<_RecurringFormSheet> {
 
   Widget _fermePicker() => Row(
         children: <Widget>[
-          _fermeBtn('🐑 Rhamna', 'rhamna'),
+          _fermeBtn('ðŸ‘ Rhamna', 'rhamna'),
           const SizedBox(width: 10),
-          _fermeBtn('🫒 Srahna', 'srahna'),
+          _fermeBtn('ðŸ«’ Srahna', 'srahna'),
         ],
       );
 
@@ -469,7 +469,7 @@ class _RecurringFormState extends State<_RecurringFormSheet> {
   }
 }
 
-// ─── Session form ─────────────────────────────────────────────────────────────
+// â”€â”€â”€ Session form â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 void _showSessionForm(BuildContext context) {
   showModalBottomSheet<void>(
@@ -544,7 +544,7 @@ class _SessionFormState extends State<_SessionFormSheet> {
           children: <Widget>[
             _handle(),
             const SizedBox(height: 18),
-            const Text('🌾 Enregistrer une session travail',
+            const Text('ðŸŒ¾ Enregistrer une session travail',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900, color: AppColors.green2)),
             const SizedBox(height: 18),
             TextFormField(
@@ -595,7 +595,7 @@ class _SessionFormState extends State<_SessionFormSheet> {
                   borderRadius: BorderRadius.circular(20),
                   border: Border.all(color: AppColors.borderSoft),
                 ),
-                child: Text('📅 ${fmtDate(_date)}', style: const TextStyle(fontWeight: FontWeight.w700)),
+                child: Text('ðŸ“… ${fmtDate(_date)}', style: const TextStyle(fontWeight: FontWeight.w700)),
               ),
             ),
             const SizedBox(height: 12),
@@ -624,9 +624,9 @@ class _SessionFormState extends State<_SessionFormSheet> {
 
   Widget _fermePicker() => Row(
         children: <Widget>[
-          _fermeBtn('🐑 Rhamna', 'rhamna'),
+          _fermeBtn('ðŸ‘ Rhamna', 'rhamna'),
           const SizedBox(width: 10),
-          _fermeBtn('🫒 Srahna', 'srahna'),
+          _fermeBtn('ðŸ«’ Srahna', 'srahna'),
         ],
       );
 
