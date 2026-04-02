@@ -1,0 +1,24 @@
+workflows:
+  android-and-web:
+    name: Android + Web
+    max_build_duration: 60
+    environment:
+      flutter: stable
+      xcode: latest
+      vars:
+        PACKAGE_NAME: "com.allopc.troupeau_ovins"
+    scripts:
+      - name: Regenerate platform folders
+        script: |
+          flutter create . --platforms=android,web
+      - name: Get Flutter packages
+        script: flutter pub get
+      - name: Analyze project
+        script: flutter analyze
+      - name: Build APK
+        script: flutter build apk --release
+      - name: Build web
+        script: flutter build web --release
+    artifacts:
+      - build/**/outputs/**/*.apk
+      - build/web/**
