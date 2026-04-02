@@ -494,7 +494,7 @@ class _RecolteFormState extends State<_RecolteFormSheet> {
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900, color: AppColors.green2)),
             const SizedBox(height: 18),
             DropdownButtonFormField<String>(
-              value: _culture,
+              initialValue: _culture,
               decoration: const InputDecoration(labelText: 'Culture'),
               items: cultureTypes
                   .map((c) => DropdownMenuItem(value: c, child: Text('${cultureEmojis[c] ?? ''} $c')))
@@ -553,7 +553,7 @@ class _RecolteFormState extends State<_RecolteFormSheet> {
                 SizedBox(
                   width: 110,
                   child: DropdownButtonFormField<int>(
-                    value: _saison,
+                    initialValue: _saison,
                     decoration: const InputDecoration(labelText: 'Saison'),
                     items: List<int>.generate(6, (i) => DateTime.now().year - 2 + i)
                         .map((y) => DropdownMenuItem(value: y, child: Text('$y')))
@@ -735,7 +735,7 @@ class _TriturationFormState extends State<_TriturationFormSheet> {
                 children: <Widget>[
                   Expanded(
                     child: DropdownButtonFormField<int>(
-                      value: _saison,
+                      initialValue: _saison,
                       decoration: const InputDecoration(labelText: 'Saison'),
                       items: List<int>.generate(6, (i) => DateTime.now().year - 2 + i)
                           .map((y) => DropdownMenuItem(value: y, child: Text('$y')))

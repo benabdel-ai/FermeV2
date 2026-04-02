@@ -11,7 +11,7 @@ class EquipeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
+    return const SingleChildScrollView(
       padding: const EdgeInsets.fromLTRB(16, 0, 16, 24),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -94,8 +94,8 @@ class _RecurringItem extends StatelessWidget {
           color: !re.actif
               ? AppColors.border
               : isDue
-                  ? AppColors.red.withOpacity(0.3)
-                  : AppColors.green2.withOpacity(0.3),
+                  ? AppColors.red.withValues(alpha: 0.3)
+                  : AppColors.green2.withValues(alpha: 0.3),
         ),
       ),
       child: Row(
@@ -107,8 +107,8 @@ class _RecurringItem extends StatelessWidget {
               color: !re.actif
                   ? AppColors.bg4
                   : isDue
-                      ? AppColors.red.withOpacity(0.12)
-                      : AppColors.green2.withOpacity(0.12),
+                      ? AppColors.red.withValues(alpha: 0.12)
+                      : AppColors.green2.withValues(alpha: 0.12),
               borderRadius: BorderRadius.circular(16),
             ),
             child: Center(
